@@ -1,3 +1,6 @@
+# I wanted to split the whole thing into three functions even though this is not necessary
+# just something I wante to do to seperate the functionality.
+
 def get_nums()
   Kernel.puts ("Please enter two numbers:")
   num1 = Kernel.gets()

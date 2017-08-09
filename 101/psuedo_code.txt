@@ -1,0 +1,40 @@
+# A method that returns the sum of two integers
+
+START
+  DEF sum (takes two parameters: num1, num2)
+    IF both arguments are integers
+      PRINT their sum
+    else
+      PRINT relevant error messgae
+  DEFNED 
+
+END
+
+
+# A method that takes an array of strings, and returns result of concatenating them all together
+
+START
+  DEF concat_strings (takes an array as an arg
+    IF all objects in array are strings
+      return the concatenation of them all
+    ELSE 
+      delete all non string objects in the array
+      PRINT "Some non string objects were deleted"
+      return the new string
+  DEFEND
+END
+
+
+# A method that talkes an array of integers, and return an array of every other element
+
+START
+  DEF something (takes a single array of integers, int_ary)
+    IF all objects in array were integers
+      SET int_ary to int_ary modified accordingly
+      return int_ary
+    ELSE
+      delete all non integer objects in int_ary
+      modify int_ary accordingly
+      return int_ary
+  DEFEND
+END 
