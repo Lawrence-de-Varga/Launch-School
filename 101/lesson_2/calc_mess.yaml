@@ -1,0 +1,25 @@
+---
+used_lang:
+  fnum:          nil
+  snum:          nil 
+  wrong_input:   nil
+  what_op:       nil
+  div_0:         nil
+  final_result:  nil
+  new_calc?:      nil
+eng:
+  eng_fnum:          "Please enter the first number: "
+  eng_snum:          "Please enter the second number: "
+  eng_wrong_input:   "Please check your input and try again."
+  eng_what_op:       "What operation would you like to perform? (Basic arithmetic only)"
+  eng_div_0:         "Error, divsion by zero."
+  eng_final_result:  "The result is: "
+  eng_new_calc?:     "Do you want to calculate something else?"
+de:
+  de_fnum:           "Bitte geben Sie die erste Nummer ein: "
+  de_snum:           "Bitte geben Sie die zweite Nummer ein: " 
+  de_wrong_input:    "Bitte uberprufen Sie ihre Eingabe und versuchen Sie es erneut."
+  de_what_op:        "Welche Operation mochten Sie durchfuhren?" 
+  de_div_0:          "Fehler. Durch Null teilen." 
+  de_final_result:   "Das Ergebnis ist: "
+  de_new_calc?:      "Mochten Sie etwas anderes berechnen?" 
