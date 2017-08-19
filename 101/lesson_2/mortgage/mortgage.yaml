@@ -1,0 +1,11 @@
+---
+bad_loan: "Error. Invalid nuber entered."
+bad_percentage: "Error. Invalid percentage entered."
+bad_time: "Error. Invalid loan duration entered."
+
+enter_loan: "Please enter your loan amount: "
+enter_percentage: "Please enter your annual interest rate (e.g 5.97): "
+enter_duration: "Please enter your loan duration (in years): "
+
+pay_fh: "You will need to pay: "
+pay_sh: " per month."
