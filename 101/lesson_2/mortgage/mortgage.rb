@@ -1,5 +1,7 @@
 require 'yaml'
 
+# the way I set the language is probably inefficient, but I tried doing it myself 
+# before reading the LS way. 
 MESSAGES = YAML.load_file('mortgage.yaml')
 
 LOCMESS = MESSAGES['used_lang']
@@ -29,8 +31,8 @@ def mess(key)
 end
 
 # two procs to be passed to get_datum and used to check for valid input 
-# they are @vars because I can't figure out how to get pry(or irb) to 
-# recognise them for testing otherwise. 
+# they are @vars because I can't figure out how to get pry(or irb) with 
+# pry -r ./file.rb to recognise them for testing otherwise. 
 @number = Proc.new do |input|
   (input.to_i.to_s == input || input.to_f.to_s == input)
 end
@@ -40,7 +42,7 @@ end
 end
 
 
-# abstracted the acquisition of one input value
+# abstracted the acquisition and validation of one input value
 def get_datum(data_request, error, test_proc)
   puts mess(data_request)
   datum = gets.chomp
@@ -68,7 +70,7 @@ end
 def mortgage()
   details = get_loan_details()
   payment = calc_repayment(details[0], details[1], details[2]).round(2)
-  puts "#{mess('pay_fh')} #{payment} #{mess('pay_sh')}"
+  puts "#{mess('pay_fh')}#{payment}#{mess('pay_sh')}"
 end 
 
 set_lang() 
