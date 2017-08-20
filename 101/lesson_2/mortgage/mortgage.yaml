@@ -1,11 +1,42 @@
 ---
-bad_loan: "Error. Invalid nuber entered."
-bad_percentage: "Error. Invalid percentage entered."
-bad_time: "Error. Invalid loan duration entered."
+used_lang:
+  bad_loan:         nil
+  bad_percentage:   nil
+  bad_time:         nil
+  
+  enter_loan:       nil
+  enter_percentage: nil
+  enter_duration:   nil
 
-enter_loan: "Please enter your loan amount: "
-enter_percentage: "Please enter your annual interest rate (e.g 5.97): "
-enter_duration: "Please enter your loan duration (in years): "
+  pay_fh:           nil
+  pay_sh:           nil
+  
+  start_mess:       nil
 
-pay_fh: "You will need to pay: "
-pay_sh: " per month."
+eng:
+  en_bad_loan: "Error. Invalid number entered."
+  en_bad_percentage: "Error. Invalid percentage entered."
+  en_bad_time: "Error. Invalid loan duration entered."
+  
+  en_enter_loan: "Please enter your loan amount: "
+  en_enter_percentage: "Please enter your annual interest rate (e.g 5.97): "
+  en_enter_duration: "Please enter your loan duration (in years): "
+  
+  en_pay_fh: "You will need to pay: "
+  en_pay_sh: " per month."
+  
+  en_start_mess: "Would you like to calculate a mortgage repayment?"
+
+de:
+ de_bad_loan: "Fehler. Ungultige Nummer eingegeben."
+ de_bad_percentage: "Fehler. Ungultige Prozentsatz eingegeben."
+ de_bad_time:        "Fehler. Ungultige Darlehensdauer eingegeben."
+ 
+ de_enter_loan: "Bitte geben Sie Ihren Kreditbetrag ein:"
+ de_enter_percentage: "Bitte geben Sie Ihren Jahreszins ein (z. B. 5.97): "
+ de_enter_duration: "Bitte geben Sie Ihre Kreditlaufzeit (in Jahren) ein:"
+                  
+ de_pay_fh: "Sie müssen zahlen:"       
+ de_pay_sh: "pro Monat."       
+ 
+ de_start_mess: "Möchten Sie eine Hypothek Rückzahlung berechnen?"

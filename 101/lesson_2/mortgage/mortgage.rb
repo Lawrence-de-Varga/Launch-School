@@ -2,6 +2,32 @@ require 'yaml'
 
 MESSAGES = YAML.load_file('mortgage.yaml')
 
+LOCMESS = MESSAGES['used_lang']
+def set_lang()
+  lang = nil
+  loop do 
+    puts "Sprichst du Deutsch (DE)? Or do you speak English (EN)?"
+    lang = gets.chomp.downcase
+    if lang.start_with?('e')
+      lang = 'eng'
+      break
+    end
+    if lang.start_with?('d')
+      lang = 'de'
+      break
+    end
+    puts "\nBad Input.\n"
+  end
+
+  messages = MESSAGES[lang].values
+  LOCMESS.each_key { |key| LOCMESS[key] = messages.shift } 
+end
+
+# just to make code clearer
+def mess(key)
+  LOCMESS[key]
+end
+
 # two procs to be passed to get_datum and used to check for valid input 
 # they are @vars because I can't figure out how to get pry(or irb) to 
 # recognise them for testing otherwise. 
@@ -13,25 +39,6 @@ end
   ((@number.call input) && (input.to_f.between?(0, 100)))
 end
 
-# three tiny methods to make code a bit clearer
-def monthly_rate(annual_rate)
-  annual_rate / 12.0
-end
-
-# to convert 5% given by human into 0.05%
-# no percent sign given in input 
-def change_rate_form(rate)
-  rate / 100.0
-end
-
-def to_months(years)
-  years * 12
-end
-
-# just to make code clearer
-def mess(key)
-  MESSAGES[key]
-end
 
 # abstracted the acquisition of one input value
 def get_datum(data_request, error, test_proc)
@@ -48,26 +55,29 @@ def get_loan_details()
   rate = get_datum('enter_percentage', 'bad_percentage', @percentage).to_f
   duration = get_datum('enter_duration', 'bad_duration', @number).to_f
 
-  rate = monthly_rate(change_rate_form(rate))
-  duration = to_months(duration)
+  rate = rate / 12 / 100 
+  duration = duration * 12 
   return loan_amount, rate, duration 
 end
 
 
-def calc_repayments(amount, rate, duration)
+def calc_repayment(amount, rate, duration)
   monthly_payment = (amount * (rate / (1 - (1 + rate)**(duration * -1))))
 end
 
 def mortgage()
   details = get_loan_details()
-  payment = calc_repayments(details[0], details[1], details[2]).round(2)
+  payment = calc_repayment(details[0], details[1], details[2]).round(2)
   puts "#{mess('pay_fh')} #{payment} #{mess('pay_sh')}"
 end 
 
+set_lang() 
+
 loop do
-  puts "Would you like to calculate a mortgage repayment?"
-  ans = gets.chomp.downcase
-  break unless ans.start_with?('y')
   mortgage()
+  puts
+  puts  "#{mess('start_mess')}" 
+  ans = gets.chomp.downcase
+  break unless %w(y j ja yes).include?(ans) 
   puts
 end

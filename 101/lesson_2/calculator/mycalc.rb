@@ -1,5 +1,5 @@
 # have not localised the 'choose and operation' part
-# as I did not follow the course program and so chaging that is just going to be a pain
+# as I did not follow the course program and so changing that is just going to be a pain
 
 
 require 'yaml'
@@ -13,9 +13,7 @@ def set_lang()
     puts "Deutsch (DE) or English (ENG)?"
     lang = gets.chomp.downcase
     break if (lang == 'de' || lang == 'eng')
-    puts
-    puts "Bad input."
-    puts
+    puts "\nBad input.\n"
   end
   
   messages = MESSAGES[lang].values
