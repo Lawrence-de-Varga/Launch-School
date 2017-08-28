@@ -25,7 +25,7 @@ eng:
   en_pay_fh: "You will need to pay: "
   en_pay_sh: " per month."
   
-  en_start_mess: "Would you like to calculate a mortgage repayment?"
+  en_start_mess: "Would you like to calculate another mortgage repayment?"
 
 de:
  de_bad_loan: "Fehler. Ungultige Nummer eingegeben."
