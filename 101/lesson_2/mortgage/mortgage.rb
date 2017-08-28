@@ -30,7 +30,7 @@ end
 
 # two procs to be passed to get_datum and used to check for valid input
 # they are @vars because I can't figure out how to get pry(or irb) with
-# pry -r ./file.rb to recognise them for testing otherwise.
+# pry -r ./file.rb to recognise them for testing otherwise. 
 @number = proc do |input|
   (input.to_i.to_s == input || input.to_f.to_s == input)
 end
@@ -45,7 +45,7 @@ def gather_datum(data_request, error, test_proc)
   datum = gets.chomp
   return datum if test_proc.call datum
   puts mess(error)
-  get_datum(data_request, error, test_proc)
+  gather_datum(data_request, error, test_proc)
 end
 
 def gather_loan_info

@@ -36,7 +36,7 @@ de:
  de_enter_percentage: "Bitte geben Sie Ihren Jahreszins ein (z. B. 5.97): "
  de_enter_duration: "Bitte geben Sie Ihre Kreditlaufzeit (in Jahren) ein:"
                   
- de_pay_fh: "Sie müssen zahlen:"       
- de_pay_sh: "pro Monat."       
+ de_pay_fh: "Sie müssen zahlen: "
+ de_pay_sh: " pro Monat."       
  
  de_start_mess: "Möchten Sie eine Hypothek Rückzahlung berechnen?"
