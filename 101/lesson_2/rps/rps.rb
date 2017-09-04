@@ -88,8 +88,8 @@ def play_game
   else
     puts message('exit')
   end
-  
 end
+
 system_clear
 puts message('welcome')
 play_game
