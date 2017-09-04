@@ -15,7 +15,6 @@ end
 
 # constructs a variable message to be displayed at the end of the game.
 def game_result_message(choices, result)
-  #binding.pry
   message('you_chose') + message(choices[0]) + message('computer_chose') + message(choices[1]) + message(result)
 end 
 
@@ -27,7 +26,6 @@ end
 def make_player_choice
   puts message('make_player_choice')
   choice = gets.chomp.downcase
-  #binding.pry
   return choice if RPS.include?(choice)
 
   puts message('bad_player_choice')
