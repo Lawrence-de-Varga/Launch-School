@@ -1,0 +1,19 @@
+welcome: "Welcome to Rock, Paper, Sissors."
+new_game: "Enjoy your game."
+
+make_player_choice: "Do you choose: Rock(r), Paper(p), or Scissors(s)?"
+bad_input_player: "Error. Please enter 'r', 'p', or 's'."
+
+you_chose: "You chose "
+computer_chose: "The computer chose "
+win: "You win!"
+lose: "You lose..."
+draw: "The game is a tie."
+r: "Rock. "
+p: "Paper. "
+s: "Scissors. "
+
+go_again: "Would you like to try again? (y/n)."
+bad_input_go_again: "Error. Please enter 'y' or 'n'."
+
+exit: "Thanks for playing."
