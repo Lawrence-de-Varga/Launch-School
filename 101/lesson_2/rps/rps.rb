@@ -18,18 +18,13 @@ def game_result_message(choices, result)
   message('you_chose') + message(choices[0]) + message('computer_chose') + message(choices[1]) + message(result)
 end 
 
-# The next two functions make the computer and player choices respectively
-def make_computer_choice
-  RPS.sample
-end
-
-def make_player_choice
+def make_choices
   puts message('make_player_choice')
   choice = gets.chomp.downcase
-  return choice if RPS.include?(choice)
+  return [choice, RPS.sample] if RPS.include?(choice)
 
   puts message('bad_player_choice')
-  make_player_choice
+  make_choices
 end
 
 # returns true if the player wants to play again, else false
@@ -72,7 +67,7 @@ def play_game
   puts message('new_game')  
   # since the last thing called by 'resolve', is the boolean function 'go_again' we can
   # put it in a conditional
-  if resolve([make_player_choice, make_computer_choice])
+  if resolve(make_choices)
     system_clear
     play_game
   else
