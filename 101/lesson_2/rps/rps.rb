@@ -13,11 +13,12 @@ def message(key)
   MESSAGES[key] 
 end
 
-# constructs a variable message to be displayed at the end of the game.
+# constructs a variable message to display the results of the game.
 def game_result_message(choices, result)
   message('you_chose') + message(choices[0]) + message('computer_chose') + message(choices[1]) + message(result)
 end 
 
+# Returns an array containing the players choice and the computer choice as selected by '.sample'
 def make_choices
   puts message('make_player_choice')
   choice = gets.chomp.downcase
@@ -39,7 +40,7 @@ def go_again
   repeat == 'y' ? true : nil
 end
 
-# returns 'draw', 'win', or 'lose'
+# returns 'draw', 'win', or 'lose' (as strings)
 def victor(choices)
   player = choices[0]
   computer = choices[1]
