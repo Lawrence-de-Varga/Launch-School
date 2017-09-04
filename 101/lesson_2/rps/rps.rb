@@ -1,4 +1,5 @@
 require 'yaml'
+require 'pry'
 
 MESSAGES = YAML.load_file('rps.yaml')
 RPS = ['r', 'p', 's']
@@ -14,6 +15,7 @@ end
 
 # constructs a variable message to be displayed at the end of the game.
 def game_result_message(choices, result)
+  #binding.pry
   message('you_chose') + message(choices[0]) + message('computer_chose') + message(choices[1]) + message(result)
 end 
 
@@ -25,12 +27,11 @@ end
 def make_player_choice
   puts message('make_player_choice')
   choice = gets.chomp.downcase
-  unless RPS.include?(choice)
-    puts message('bad_input_player') 
-    return make_player_choice
-  end
+  #binding.pry
+  return choice if RPS.include?(choice)
 
-  choice
+  puts message('bad_player_choice')
+  make_player_choice
 end
 
 # returns true if the player wants to play again, else false
@@ -45,19 +46,19 @@ def go_again
   repeat == 'y' ? true : nil
 end
 
-# returns 0 for a draw, 1 for player win, 2 for player loss
+# returns 'draw', 'win', or 'lose'
 def victor(choices)
   player = choices[0]
   computer = choices[1]
   
   case
-  when player == computer then 0
-  when player == 'r' && computer == 's' then 1
-  when player == 'r' && computer == 'p' then 2
-  when player == 'p' && computer == 'r' then 1
-  when player == 'p' && computer == 's' then 2
-  when player == 's' && computer == 'p' then 1
-  when player == 's' && computer == 'r' then 2
+  when player == computer then 'draw'
+  when player == 'r' && computer == 's' then 'win'
+  when player == 'r' && computer == 'p' then 'lose'
+  when player == 'p' && computer == 'r' then 'win'
+  when player == 'p' && computer == 's' then 'lose'
+  when player == 's' && computer == 'p' then 'win'
+  when player == 's' && computer == 'r' then 'lose'
   end
 end
 
@@ -67,13 +68,14 @@ def resolve_helper(choices, result)
   go_again
 end
 
-# Main function, determines who won and in turn whether to play again 
+# determines the victor via 'victor' then calls resolve_helper to print the result 
+# and determine whether or not to play again
 def resolve(choices)
   result = victor(choices)
-  case 
-  when result == 0 then resolve_helper(choices, 'draw')
-  when result == 1 then resolve_helper(choices, 'win')
-  when result == 2 then resolve_helper(choices, 'lose')
+  case result
+  when 'draw' then resolve_helper(choices, result)
+  when 'win' then resolve_helper(choices, result)
+  when 'lose' then resolve_helper(choices, result)
   end
 end
 
@@ -90,6 +92,6 @@ def play_game
   end
   
 end
-
+system_clear
 puts message('welcome')
 play_game

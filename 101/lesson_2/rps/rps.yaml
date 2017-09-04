@@ -2,7 +2,7 @@ welcome: "Welcome to Rock, Paper, Sissors."
 new_game: "Enjoy your game."
 
 make_player_choice: "Do you choose: Rock(r), Paper(p), or Scissors(s)?"
-bad_input_player: "Error. Please enter 'r', 'p', or 's'."
+bad_player_choice: "Error. Please enter 'r', 'p', or 's'."
 
 you_chose: "You chose "
 computer_chose: "The computer chose "
