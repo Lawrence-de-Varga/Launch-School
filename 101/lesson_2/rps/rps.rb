@@ -19,8 +19,7 @@ end
 
 # The next two functions make the computer and player choices respectively
 def make_computer_choice
-  choice = rand(0..2)
-  RPS[choice]
+  RPS.sample
 end
 
 def make_player_choice
@@ -67,7 +66,6 @@ def resolve_helper(choices, result)
   puts game_result_message(choices, result)
   go_again
 end
-
 
 # Main function, determines who won and in turn whether to play again 
 def resolve(choices)
