@@ -60,21 +60,11 @@ def victor(choices)
   end
 end
 
-# Makes 'resolve' (below) less cluttered
-def resolve_helper(choices, result)
-  puts game_result_message(choices, result)
-  go_again
-end
-
-# determines the victor via 'victor' then calls resolve_helper to print the result 
-# and determine whether or not to play again
+# determines the victor via 'victor' the calls 'game_result_message' to print the result
+# and determine whether or not to play again via 'go_again'
 def resolve(choices)
-  result = victor(choices)
-  case result
-  when 'draw' then resolve_helper(choices, result)
-  when 'win' then resolve_helper(choices, result)
-  when 'lose' then resolve_helper(choices, result)
-  end
+  puts game_result_message(choices, victor(choices))
+  go_again
 end
 
 # starts the game
