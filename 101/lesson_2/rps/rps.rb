@@ -37,7 +37,7 @@ def go_again
     puts message('bad_input_go_again')
     return go_again
   end
-  repeat == 'y' ? true : nil
+  repeat == 'y' 
 end
 
 # returns 'draw', 'win', or 'lose' (as strings)
