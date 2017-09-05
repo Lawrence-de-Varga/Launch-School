@@ -1,5 +1,4 @@
 require 'yaml'
-require 'pry'
 
 MESSAGES = YAML.load_file('rps.yaml')
 RPS = %w(r p s)
@@ -48,12 +47,8 @@ def victor(choices)
 
   case
   when player == computer then 'draw'
-  when player == 'r' && computer == 's' then 'win'
-  when player == 'r' && computer == 'p' then 'lose'
-  when player == 'p' && computer == 'r' then 'win'
-  when player == 'p' && computer == 's' then 'lose'
-  when player == 's' && computer == 'p' then 'win'
-  when player == 's' && computer == 'r' then 'lose'
+  when (player == 'r' && computer == 's') || (player == 'p' && computer == 'r') || (player == 's' && computer == 'p') then 'win'
+  when (player == 'r' && computer == 'p') || (player == 'p' && computer == 's') || (player == 's' && computer == 'r') then 'lose'
   end
 end
 
