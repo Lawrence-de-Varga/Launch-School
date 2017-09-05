@@ -2,7 +2,7 @@ require 'yaml'
 require 'pry'
 
 MESSAGES = YAML.load_file('rps.yaml')
-RPS = ['r', 'p', 's']
+RPS = %w(r p s)
 
 # Just two helpers
 def system_clear
@@ -10,15 +10,16 @@ def system_clear
 end
 
 def message(key)
-  MESSAGES[key] 
+  MESSAGES[key]
 end
 
 # constructs a variable message to display the results of the game.
 def game_result_message(choices, result)
   message('you_chose') + message(choices[0]) + message('computer_chose') + message(choices[1]) + message(result)
-end 
+end
 
-# Returns an array containing the players choice and the computer choice as selected by '.sample'
+# Returns an array containing the players choice and the computer
+# choice as selected by '.sample'
 def make_choices
   puts message('make_player_choice')
   choice = gets.chomp.downcase
@@ -32,8 +33,8 @@ end
 def go_again
   puts message('go_again')
   repeat = gets.chomp.downcase
-  
-  unless ['y','n'].include?(repeat)
+
+  unless %w(y n).include?(repeat)
     puts message('bad_input_go_again')
     return go_again
   end
@@ -44,7 +45,7 @@ end
 def victor(choices)
   player = choices[0]
   computer = choices[1]
-  
+
   case
   when player == computer then 'draw'
   when player == 'r' && computer == 's' then 'win'
@@ -56,8 +57,8 @@ def victor(choices)
   end
 end
 
-# determines the victor via 'victor' the calls 'game_result_message' to print the result
-# and determine whether or not to play again via 'go_again'
+# determines the victor via 'victor' the calls 'game_result_message' to
+# print the result and determine whether or not to play again via 'go_again'
 def resolve(choices)
   puts game_result_message(choices, victor(choices))
   go_again
@@ -65,9 +66,9 @@ end
 
 # starts the game
 def play_game
-  puts message('new_game')  
-  # since the last thing called by 'resolve', is the boolean function 'go_again' we can
-  # put it in a conditional
+  puts message('new_game')
+  # since the last thing called by 'resolve', is the boolean function 'go_again'
+  # it can be put it in a conditional
   if resolve(make_choices)
     system_clear
     play_game
