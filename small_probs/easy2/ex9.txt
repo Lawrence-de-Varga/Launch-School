@@ -1,0 +1,15 @@
+# String assignment
+name = 'Bob'
+save_name = name
+name.upcase!
+puts name, save_name
+
+outputs -> BOB
+           BOB
+
+This works because upcase! modifies the actual object not a copy. 
+name and save_name both point to the same space in memory 
+which is the object modified by upcase! 
+So after having called upcase! the object in memory is modified 
+and both name and save_name point to the new object.
+

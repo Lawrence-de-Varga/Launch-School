@@ -1,0 +1,13 @@
+# Mutation
+
+array1 = %w(Moe Larry Curly Shemp Harpo Chico Groucho Zeppo)
+array2 = []
+array1.each { |value| array2 << value }
+array1.each { |value| value.upcase! if value.start_with?('C', 'S') }
+puts array2
+
+will output -> ['Moe', 'Larry', 'CURLY', 'SHEMP', 'Harpo', 'CHICO', 'Groucho', 'Zeppo']
+
+first array2 is given the same elements as array1.
+Then the objects that satisfy the conditional are mutated. 
+Since array1[2] points to the same object as array2[2], they are both mutated.
