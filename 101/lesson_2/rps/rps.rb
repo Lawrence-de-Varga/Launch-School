@@ -14,8 +14,8 @@ end
 
 # constructs a variable message to display the results of the game.
 def game_result_message(choices, result)
-  "You chose " + message(choices[0]) +
-    "The computer chose " + message(choices[1]) + message(result)
+  'You chose ' + message(choices[0]) +
+    'The computer chose ' + message(choices[1]) + message(result)
 end
 
 # Returns an array containing the players choice and the computer
@@ -42,7 +42,6 @@ def go_again
 end
 
 # the following three methods combine to determine the game result
-
 def player_win?(player, computer)
   (player == 'r' && computer == 's') ||
     (player == 'p' && computer == 'r') ||
@@ -68,16 +67,16 @@ end
 
 # starts the game
 def play_game
-
   refresh_display
   puts message('welcome')
-  loop do 
+
+  loop do
     puts message('new_game')
     choices = make_choices
     puts game_result_message(choices, victor(choices))
     break puts message('exit') unless go_again
     refresh_display
   end
-end  
+end
 
 play_game
