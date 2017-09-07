@@ -14,8 +14,8 @@ end
 
 # constructs a variable message to display the results of the game.
 def game_result_message(choices, result)
-  message('you_chose') + message(choices[0]) +
-    message('computer_chose') + message(choices[1]) + message(result)
+  "You chose " + message(choices[0]) +
+    "The computer chose " + message(choices[1]) + message(result)
 end
 
 # Returns an array containing the players choice and the computer
