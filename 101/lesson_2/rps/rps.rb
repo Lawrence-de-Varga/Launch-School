@@ -1,6 +1,6 @@
 require 'yaml'
 
-MESSAGES = YAML.load_file('rps.yaml')
+MESSAGES = YAML.load_file('yrps.yaml')
 RPS = %w(r p s)
 
 # Just two helpers
