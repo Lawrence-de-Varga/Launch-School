@@ -4,7 +4,7 @@ MESSAGES = YAML.load_file('rps.yaml')
 RPS = %w(r p s)
 
 # Just two helpers
-def system_clear
+def refresh_display
   (system('clear') || system('cls'))
 end
 
@@ -14,7 +14,8 @@ end
 
 # constructs a variable message to display the results of the game.
 def game_result_message(choices, result)
-  message('you_chose') + message(choices[0]) + message('computer_chose') + message(choices[1]) + message(result)
+  message('you_chose') + message(choices[0]) +
+    message('computer_chose') + message(choices[1]) + message(result)
 end
 
 # Returns an array containing the players choice and the computer
@@ -37,18 +38,31 @@ def go_again
     puts message('bad_input_go_again')
     return go_again
   end
-  repeat == 'y' 
+  repeat == 'y'
 end
 
-# returns 'draw', 'win', or 'lose' (as strings)
+# the following three methods combine to determine the game result
+
+def player_win?(player, computer)
+  (player == 'r' && computer == 's') ||
+    (player == 'p' && computer == 'r') ||
+    (player == 's' && computer == 'p')
+end
+
+def player_lose?(player, computer)
+  (player == 'r' && computer == 'p') ||
+    (player == 'p' && computer == 's') ||
+    (player == 's' && computer == 'r')
+end
+
 def victor(choices)
   player = choices[0]
   computer = choices[1]
 
   case
   when player == computer then 'draw'
-  when (player == 'r' && computer == 's') || (player == 'p' && computer == 'r') || (player == 's' && computer == 'p') then 'win'
-  when (player == 'r' && computer == 'p') || (player == 'p' && computer == 's') || (player == 's' && computer == 'r') then 'lose'
+  when player_win?(player, computer) then 'win'
+  when player_lose?(player, computer) then 'lose'
   end
 end
 
@@ -65,13 +79,13 @@ def play_game
   # since the last thing called by 'resolve', is the boolean function 'go_again'
   # it can be put it in a conditional
   if resolve(make_choices)
-    system_clear
+    refresh_display
     play_game
   else
     puts message('exit')
   end
 end
 
-system_clear
+refresh_display
 puts message('welcome')
 play_game
