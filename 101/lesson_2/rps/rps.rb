@@ -34,11 +34,11 @@ def go_again
   puts message('go_again')
   repeat = gets.chomp.downcase
 
-  unless %w(y n).include?(repeat)
+  unless repeat.start_with?('y', 'n') 
     puts message('bad_input_go_again')
     return go_again
   end
-  repeat == 'y'
+  repeat.start_with?('y') 
 end
 
 # the following three methods combine to determine the game result
