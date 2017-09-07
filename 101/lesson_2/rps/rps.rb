@@ -68,24 +68,31 @@ end
 
 # determines the victor via 'victor' the calls 'game_result_message' to
 # print the result and determine whether or not to play again via 'go_again'
-def resolve(choices)
-  puts game_result_message(choices, victor(choices))
-  go_again
-end
+#def resolve(choices)
+#  puts game_result_message(choices, victor(choices))
+#  go_again
+#end
 
 # starts the game
 def play_game
-  puts message('new_game')
-  # since the last thing called by 'resolve', is the boolean function 'go_again'
-  # it can be put it in a conditional
-  if resolve(make_choices)
-    refresh_display
-    play_game
-  else
-    puts message('exit')
-  end
-end
 
-refresh_display
-puts message('welcome')
+  refresh_display
+  puts message('welcome')
+  loop do 
+    puts message('new_game')
+    choices = make_choices
+    puts game_result_message(choices, victor(choices))
+    break puts message('exit') unless go_again
+    refresh_display
+  end
+end  
+#  # since the last thing called by 'resolve', is the boolean function 'go_again'
+#  # it can be put it in a conditional
+#  if resolve(make_choices)
+#    refresh_display
+#    play_game
+#  else
+#    puts message('exit')
+#  end
+#end
 play_game
