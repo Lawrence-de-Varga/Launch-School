@@ -1,8 +1,8 @@
-welcome: "Welcome to Rock, Paper, Sissors."
+welcome: "Welcome to Rock, Paper, Sissors, Lizard, Spock."
 new_game: "Enjoy your game."
 
-make_player_choice: "Do you choose: Rock(r), Paper(p), or Scissors(s)?"
-bad_player_choice: "Error. Please enter 'r', 'p', or 's'."
+player_options: "Do you choose: Rock(r), Paper(p), Scissors(s), Lizard(l), or Spock(sp)?"
+bad_player_options: "Error. Please enter 'r', 'p', 's', 'l', or 'sp'."
 
 win: "You win!"
 lose: "You lose..."
@@ -10,6 +10,8 @@ draw: "The game is a tie."
 r: "Rock. "
 p: "Paper. "
 s: "Scissors. "
+l: "Lizard. "
+sp: "Spock. "
 
 go_again: "Would you like to try again? (y/n)."
 bad_input_go_again: "Error. Please enter 'y' or 'n'."

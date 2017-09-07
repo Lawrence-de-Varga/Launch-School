@@ -1,7 +1,7 @@
 require 'yaml'
 
 MESSAGES = YAML.load_file('yrps.yaml')
-RPS = %w(r p s)
+RPS = %w(r p s l sp)
 
 # Just two helpers
 def refresh_display
@@ -21,35 +21,36 @@ end
 # Returns an array containing the players choice and the computer
 # choice as selected by '.sample'
 def make_choices
-  puts message('make_player_choice')
+  puts message('player_options')
   choice = gets.chomp.downcase
   return [choice, RPS.sample] if RPS.include?(choice)
 
-  puts message('bad_player_choice')
+  puts message('bad_player_options')
   make_choices
 end
 
 # returns true if the player wants to play again, else false
-def go_again
+def another_game?
   puts message('go_again')
   repeat = gets.chomp.downcase
 
-  unless repeat.start_with?('y', 'n') 
+  unless repeat.start_with?('y', 'n')
     puts message('bad_input_go_again')
-    return go_again
+    return another_game?
   end
-  repeat.start_with?('y') 
+  repeat.start_with?('y')
 end
 
-# the following three methods combine to determine the game result
+# the following two methods combine to determine the game result
 def player_win?(player, computer)
-  (player == 'r' && computer == 's') ||
-    (player == 'p' && computer == 'r') ||
-    (player == 's' && computer == 'p')
+  (player == 'r' && (computer == 's' || computer == 'l')) ||
+    (player == 'p' && (computer == 'r' || computer == 'sp')) ||
+    (player == 's' && (computer == 'p' || computer == 'l')) ||
+    (player == 'l' && (computer == 'sp' || computer == 'p')) ||
+    (player == 'sp' && (computer == 's' || computer == 'r'))
 end
 
-
-def victor(choices)
+def game_result(choices)
   player = choices[0]
   computer = choices[1]
 
@@ -68,8 +69,8 @@ def play_game
   loop do
     puts message('new_game')
     choices = make_choices
-    puts game_result_message(choices, victor(choices))
-    break puts message('exit') unless go_again
+    puts game_result_message(choices, game_result(choices))
+    break puts message('exit') unless another_game?
     refresh_display
   end
 end
