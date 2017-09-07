@@ -66,13 +66,6 @@ def victor(choices)
   end
 end
 
-# determines the victor via 'victor' the calls 'game_result_message' to
-# print the result and determine whether or not to play again via 'go_again'
-#def resolve(choices)
-#  puts game_result_message(choices, victor(choices))
-#  go_again
-#end
-
 # starts the game
 def play_game
 
@@ -86,13 +79,5 @@ def play_game
     refresh_display
   end
 end  
-#  # since the last thing called by 'resolve', is the boolean function 'go_again'
-#  # it can be put it in a conditional
-#  if resolve(make_choices)
-#    refresh_display
-#    play_game
-#  else
-#    puts message('exit')
-#  end
-#end
+
 play_game
