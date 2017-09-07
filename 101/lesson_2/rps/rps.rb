@@ -48,11 +48,6 @@ def player_win?(player, computer)
     (player == 's' && computer == 'p')
 end
 
-def player_lose?(player, computer)
-  (player == 'r' && computer == 'p') ||
-    (player == 'p' && computer == 's') ||
-    (player == 's' && computer == 'r')
-end
 
 def victor(choices)
   player = choices[0]
@@ -61,7 +56,7 @@ def victor(choices)
   case
   when player == computer then 'draw'
   when player_win?(player, computer) then 'win'
-  when player_lose?(player, computer) then 'lose'
+  else 'lose'
   end
 end
 
