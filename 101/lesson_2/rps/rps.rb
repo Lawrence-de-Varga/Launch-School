@@ -51,8 +51,7 @@ def player_win?(player, computer)
 end
 
 def game_result(choices)
-  player = choices[0]
-  computer = choices[1]
+  player, computer = choices[0], choices[1]
 
   case
   when player == computer then 'draw'
@@ -103,4 +102,4 @@ def play_game
   puts message('exit')
 end
 
-#play_game
+play_game
