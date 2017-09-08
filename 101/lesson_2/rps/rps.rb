@@ -81,12 +81,10 @@ end
 
 # string used when a match (5 games) has been won.
 def victor_string(scores)
-  victor = case scores
-           when scores[0] == 5 then 'You'
-           else 'The computer'
-           end
-
-  "#{victor} #{victor == 'You' ? 'have' : 'has'} won this match."
+  case scores
+  when scores[0] == 5 then "You have won this match."
+  else "The computer has won this match."
+  end
 end
 
 def play_match(scores)
@@ -108,3 +106,5 @@ def play_game
   play_match if another_game?
   puts message('exit')
 end
+
+play_game
