@@ -36,14 +36,13 @@ end
 
 # returns true if the player wants to play again, else false
 def another_game?
-  puts message('go_again')
-  repeat = gets.chomp.downcase
-
-  unless repeat.start_with?('y', 'n')
-    puts message('bad_input_go_again')
-    return another_game?
+  loop do
+    puts message('go_again')
+    answer = gets.chomp.downcase
+    
+    next puts message('bad_input_go_again') unless answer.start_with?('y', 'n')
+    break answer.start_with?('y') ? true : false 
   end
-  repeat.start_with?('y')
 end
 
 # The next two method combine to determine the result of the match
@@ -107,4 +106,4 @@ def play_game
   puts message('exit')
 end
 
-play_game
+#play_game
