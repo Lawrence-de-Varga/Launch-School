@@ -53,8 +53,8 @@ end
 def game_result(choices)
   player, computer = choices[0], choices[1]
 
-  case
-  when player == computer then 'draw'
+  case player
+  when computer then 'draw'
   when player_win?(player, computer) then 'win'
   else 'lose'
   end
@@ -82,16 +82,12 @@ def victor_string(scores)
   message(scores[0] == 5 ? 'match_won' : 'match_lost')
 end
 
-def end_match?(scores)
-  scores[0] == 5 || scores[1] == 5
-end
-
 def play_match(scores)
   refresh_display
   loop do
     puts message('new_game')
     scores = play_round(scores)
-    break puts victor_string(scores) if end_match?(scores)
+    break puts victor_string(scores) if scores.include(5)
 
     puts message('next_round')
     refresh_display if gets
@@ -102,7 +98,7 @@ def play_game
   refresh_display
   puts message('welcome')
   play_match([0, 0])
-  play_match if another_game?
+  play_match([0, 0]) if another_game?
   puts message('exit')
 end
 
