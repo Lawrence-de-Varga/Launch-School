@@ -87,7 +87,7 @@ def play_match(scores)
   loop do
     puts message('new_game')
     scores = play_round(scores)
-    break puts victor_string(scores) if scores.include(5)
+    break puts victor_string(scores) if scores.include?(5)
 
     puts message('next_round')
     refresh_display if gets
