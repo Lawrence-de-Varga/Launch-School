@@ -39,9 +39,9 @@ def another_game?
   loop do
     puts message('go_again')
     answer = gets.chomp.downcase
-    
+
     next puts message('bad_input_go_again') unless answer.start_with?('y', 'n')
-    break answer.start_with?('y') ? true : false 
+    break answer.start_with?('y') ? true : false
   end
 end
 
@@ -82,12 +82,16 @@ def victor_string(scores)
   message(scores[0] == 5 ? 'match_won' : 'match_lost')
 end
 
+def end_match?(scores)
+  scores[0] == 5 || scores[1] == 5
+end
+
 def play_match(scores)
   refresh_display
   loop do
     puts message('new_game')
     scores = play_round(scores)
-    break puts victor_string(scores) if scores[0] == 5 || scores[1] == 5
+    break puts victor_string(scores) if end_match?(scores)
 
     puts message('next_round')
     refresh_display if gets
