@@ -2,6 +2,11 @@ require 'yaml'
 
 MESSAGES = YAML.load_file('yrps.yaml')
 RPS = %w(r p s l sp)
+VICTORY_CONDITIONS = { 'r' => %w(s l),
+                       'p' => %w(r sp),
+                       's' => %w(p l),
+                       'l' => %w(sp p),
+                       'sp' => %w(s r) }
 
 # Just two helpers
 def refresh_display
@@ -13,13 +18,13 @@ def message(key)
 end
 
 # constructs a variable message to display the results of the game.
-def game_result_message(choices, result)
-  'You chose ' + message(choices[0]) +
-    'The computer chose ' + message(choices[1]) + message(result)
+def print_round_result(choices, result, player_score, computer_score)
+  puts 'You chose ' + message(choices[0]) +
+       'The computer chose ' + message(choices[1]) + message(result) +
+       " The scores are :: You: #{player_score}. Computer: #{computer_score}."
 end
 
-# Returns an array containing the players choice and the computer
-# choice as selected by '.sample'
+# Returns an array containing the player and computer choices
 def make_choices
   puts message('player_options')
   choice = gets.chomp.downcase
@@ -41,13 +46,9 @@ def another_game?
   repeat.start_with?('y')
 end
 
-# the following two methods combine to determine the game result
+# The next two method combine to determine the result of the match
 def player_win?(player, computer)
-  (player == 'r' && (computer == 's' || computer == 'l')) ||
-    (player == 'p' && (computer == 'r' || computer == 'sp')) ||
-    (player == 's' && (computer == 'p' || computer == 'l')) ||
-    (player == 'l' && (computer == 'sp' || computer == 'p')) ||
-    (player == 'sp' && (computer == 's' || computer == 'r'))
+  VICTORY_CONDITIONS[player].include?(computer)
 end
 
 def game_result(choices)
@@ -61,18 +62,49 @@ def game_result(choices)
   end
 end
 
-# starts the game
-def play_game
-  refresh_display
-  puts message('welcome')
-
-  loop do
-    puts message('new_game')
-    choices = make_choices
-    puts game_result_message(choices, game_result(choices))
-    break puts message('exit') unless another_game?
-    refresh_display
+def update_scores(scores, result)
+  case result
+  when 'win' then [scores[0] + 1, scores[1]]
+  when 'lose' then [scores[0], scores[1] + 1]
+  else scores
   end
 end
 
-play_game
+# Plays a single round of rps
+def play_round(scores)
+  choices = make_choices
+  result = game_result(choices)
+  scores = update_scores(scores, result)
+  print_round_result(choices, result, scores[0], scores[1])
+  scores
+end
+
+# string used when a match (5 games) has been won.
+def victor_string(scores)
+  victor = case scores
+           when scores[0] == 5 then 'You'
+           else 'The computer'
+           end
+
+  "#{victor} #{victor == 'You' ? 'have' : 'has'} won this match."
+end
+
+def play_match(scores)
+  refresh_display
+  loop do
+    puts message('new_game')
+    scores = play_round(scores)
+    break puts victor_string(scores) if scores[0] == 5 || scores[1] == 5
+
+    puts message('next_round')
+    refresh_display if gets
+  end
+end
+
+def play_game
+  refresh_display
+  puts message('welcome')
+  play_match([0, 0])
+  play_match if another_game?
+  puts message('exit')
+end

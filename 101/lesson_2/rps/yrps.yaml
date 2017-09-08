@@ -7,6 +7,8 @@ bad_player_options: "Error. Please enter 'r', 'p', 's', 'l', or 'sp'."
 win: "You win!"
 lose: "You lose..."
 draw: "The game is a tie."
+match_over: "The match is over." 
+
 r: "Rock. "
 p: "Paper. "
 s: "Scissors. "
@@ -15,5 +17,7 @@ sp: "Spock. "
 
 go_again: "Would you like to try again? (y/n)."
 bad_input_go_again: "Error. Please enter 'y' or 'n'."
+
+next_round: "Hit enter to continue to the next round."
 
 exit: "Thanks for playing."
