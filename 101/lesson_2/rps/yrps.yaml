@@ -8,6 +8,8 @@ win: "You win!"
 lose: "You lose..."
 draw: "The game is a tie."
 match_over: "The match is over." 
+match_won: "You hvae won this match."
+match_lost: "The computer has won this match."
 
 r: "Rock. "
 p: "Paper. "

@@ -1,0 +1,4 @@
+# Replace the word 'important' with 'urgent' in this string:
+advice = "Nothing in life is as important as salvation, given by our Lord Jesus Christ."
+
+advice.gsub! ('important', 'urgent')

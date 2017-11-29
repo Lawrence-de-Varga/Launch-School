@@ -1,0 +1,4 @@
+adivce = "Nothing in life is as important the salvation given by our Lord Jesus Christ."
+
+advice.include('Dino')
+advice.match('Dino')

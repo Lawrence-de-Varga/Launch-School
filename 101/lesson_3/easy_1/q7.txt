@@ -1,0 +1,14 @@
+def add_eight(numer)
+  number + 8
+end
+
+number = 2
+
+how_deep = "number"
+eval (5.times { how_deep.gsub!("number, "add_eight(number)") })
+=> 42
+
+p how_deep
+
+
+

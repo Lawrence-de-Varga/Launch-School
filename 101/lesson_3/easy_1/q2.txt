@@ -1,0 +1,22 @@
+# What is != and where should you use it?
+!= means 'not equal' you would use it to test if two values are not equal to each other
+
+# put ! before something, !user_name
+Unless user_name was nil or false, the above would return true.
+! behind something returns the opposite of it's boolean value
+e.g. !5 returns false, as 5 is truthy.
+
+# puts ! after something, like words.uniq!
+In most cases ! after a method call indicates a destructive method. 
+One that mutates the caller. 
+
+# put ? before something
+? before something ... not sure. The ternary ?: operator is all I know of
+
+# puts ? after something
+directly after a method name this would suggest that the method returns a boolean.
+otherwise it's probably part of the?: ternary operator.
+
+# put !! before something
+Return it's boolean value !!true returns true
+!!false returns false !!5 returns true

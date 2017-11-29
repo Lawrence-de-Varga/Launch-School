@@ -1,0 +1,6 @@
+thing = "The Munsters are creepy in a good way."
+
+thing.capitalize
+thing.swapcase
+thing.downcase
+thing.upcase
